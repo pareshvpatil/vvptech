@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VVP Tech — IT Consultancy Services</title>
+    <meta name="description" content="VVP Tech offers end‑to‑end IT consultancy: web, mobile, cloud, DevOps, frontend, backend, data, AI development, and infrastructure services." />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <nav class="sticky-nav">
+      <div class="container">
+        <ul>
+          <li><strong>VVP Tech</strong></li>
+        </ul>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#expertise">Expertise</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">🌙</button></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <header class="container hero">
+      <section class="grid hero-content">
+        <div>
+          <h1>IT Consultancy, Delivered Right</h1>
+          <p class="lede">
+            End‑to‑end software services across modern stacks — from idea to
+            production. We design, build, deploy, and support.
+          </p>
+          <p>
+            <a href="#contact" class="contrast" role="button">Discuss your project</a>
+          </p>
+          <p class="meta">
+            Proprietor: <strong>Mrs. Vasudha Patil</strong> • Pune, Maharashtra, India
+          </p>
+        </div>
+        <div class="hero-card">
+          <article>
+            <header>Why VVP Tech?</header>
+            <ul>
+              <li>Pragmatic solutions with clear delivery milestones</li>
+              <li>Cloud‑ready architectures and DevOps baked in</li>
+              <li>Transparent communication and documentation</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </header>
+
+    <main class="container">
+      <section id="services">
+        <h2>Services</h2>
+        <div class="grid cards">
+          <article>
+            <h3>Web & Mobile</h3>
+            <p>
+              Modern, responsive apps with accessibility and performance at the core.
+              Landing pages, dashboards, portals, and PWAs.
+            </p>
+            <ul>
+              <li>React, Vue, Svelte, Next.js, Nuxt</li>
+              <li>TypeScript, Tailwind, Pico.css</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Backend & APIs</h3>
+            <p>
+              Robust services and APIs with clean architecture, security, and
+              observability.
+            </p>
+            <ul>
+              <li>Node.js, Python, Go, Java, .NET</li>
+              <li>REST, GraphQL, gRPC</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Cloud & DevOps</h3>
+            <p>
+              CI/CD, infrastructure as code, containers, and cloud deployments
+              tuned for reliability and cost.
+            </p>
+            <ul>
+              <li>AWS, Azure, GCP</li>
+              <li>Docker, Kubernetes, Terraform</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Data & Integrations</h3>
+            <p>
+              ETL pipelines, analytics, and third‑party integrations to connect
+              your business.
+            </p>
+            <ul>
+              <li>PostgreSQL, MySQL, MongoDB, Redis</li>
+              <li>Stripe, Slack, Twilio, OAuth</li>
+            </ul>
+          </article>
+          <article>
+            <h3>AI Development</h3>
+            <p>
+              AI-backed platforms, agentic AI systems, MCP server development,
+              and AI infrastructure architecture.
+            </p>
+            <ul>
+              <li>LLM integration, RAG, vector databases</li>
+              <li>Agent frameworks, MCP protocols, A2A</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="expertise">
+        <h2>Expertise</h2>
+        <div class="grid">
+          <article>
+            <h3>Frontend Development</h3>
+            <p>
+              Component‑driven UIs, design systems, performance profiling,
+              responsive layouts, and accessibility (WCAG).
+            </p>
+          </article>
+          <article>
+            <h3>Backend Architecture</h3>
+            <p>
+              Domain‑driven design, microservices vs monoliths, caching,
+              messaging, and database design.
+            </p>
+          </article>
+          <article>
+            <h3>DevOps & SRE</h3>
+            <p>
+              CI/CD pipelines, container orchestration, monitoring, alerting,
+              incident response, and cost optimization.
+            </p>
+          </article>
+          <article>
+            <h3>Security & Compliance</h3>
+            <p>
+              Secure coding, secrets management, least privilege, encryption,
+              and audit‑ready processes.
+            </p>
+          </article>
+          <article>
+            <h3>AI Architecture</h3>
+            <p>
+              Design and implement AI infrastructure, model serving, monitoring,
+              and scalable AI platform architectures.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="approach">
+        <h2>Our Workflow</h2>
+        <div class="workflow-grid">
+          <div class="workflow-card">
+            <div class="workflow-number">01</div>
+            <h3>Discover</h3>
+            <p>Understand context, users, and business goals through collaborative workshops and research.</p>
+            <div class="workflow-icon">🔍</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-card">
+            <div class="workflow-number">02</div>
+            <h3>Design</h3>
+            <p>Propose architecture, technology stack, and clear delivery milestones with detailed roadmaps.</p>
+            <div class="workflow-icon">📐</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-card">
+            <div class="workflow-number">03</div>
+            <h3>Deliver</h3>
+            <p>Iterate with regular demos, feedback loops, and transparent communication throughout development.</p>
+            <div class="workflow-icon">🚀</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-card">
+            <div class="workflow-number">04</div>
+            <h3>Operate</h3>
+            <p>Monitor performance, optimize systems, and provide ongoing support and maintenance.</p>
+            <div class="workflow-icon">⚙️</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About VVP Tech</h2>
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="about-icon">🚀</div>
+            <h3>Our Mission</h3>
+            <p>Transforming ideas into digital reality. We bridge the gap between vision and execution, turning complex challenges into elegant solutions that drive business growth.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-icon">🎯</div>
+            <h3>Our Approach</h3>
+            <p>We believe in the power of collaboration and innovation. Every project is a partnership where we combine technical expertise with deep understanding of your business needs.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-icon">💡</div>
+            <h3>Our Philosophy</h3>
+            <p>Technology should serve people, not the other way around. We build solutions that are intuitive, scalable, and future-ready, always keeping the end user in mind.</p>
+          </div>
+        </div>
+        <div class="about-founder">
+          <div class="founder-info">
+            <h3>Meet Our Founder</h3>
+            <p class="founder-name">Mrs. Vasudha Patil</p>
+            <p class="founder-title">Proprietor & Lead Consultant</p>
+            <p class="founder-desc">With a passion for technology and a commitment to excellence, Vasudha leads VVP Tech from our headquarters in Pune, Maharashtra. Her vision drives our mission to deliver exceptional IT solutions that empower businesses to thrive in the digital age.</p>
+            <div class="founder-location">
+              <span class="location-icon">📍</span>
+              <span>Pune, Maharashtra, India</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Ready to start? Reach out and we’ll respond promptly.</p>
+        <div class="grid">
+          <article>
+            <h3>Email</h3>
+            <p><a href="mailto:contact@vvptech.example">contact@vvptech.example</a></p>
+          </article>
+          <article>
+            <h3>Location</h3>
+            <p>Pune, Maharashtra, India</p>
+            <p>
+              <a href="https://maps.google.com/?q=Pune%2C%20Maharashtra%2C%20India" target="_blank" rel="noopener">View on Google Maps</a>
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container">
+      <small>&copy; <span id="year"></span> VVP Tech. All rights reserved.</small>
+    </footer>
+
+    <script>
+      const yearElement = document.getElementById('year');
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      
+      // Check for saved theme preference or default to dark
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      body.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+      
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+      
+      function updateThemeIcon(theme) {
+        themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+      }
+    </script>
+  </body>
+</html>
+
+

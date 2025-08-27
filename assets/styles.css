@@ -1,0 +1,442 @@
+/* Modern customizations layered on Pico.css */
+:root {
+  --blue: #106EBE;
+  --mint: #0FFCBE;
+  --brand: var(--blue);
+  --primary: var(--blue);
+  --primary-hover: var(--mint);
+  --primary-focus: var(--mint);
+}
+
+/* Dark theme (default) */
+body[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: rgba(16, 110, 190, 0.05);
+  --text-primary: #e2e8f0;
+  --text-secondary: var(--mint);
+  --border-color: rgba(16, 110, 190, 0.2);
+  --nav-bg: rgba(10, 10, 10, 0.95);
+}
+
+/* Light theme */
+body[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: rgba(16, 110, 190, 0.05);
+  --text-primary: #1a1a1a;
+  --text-secondary: var(--blue);
+  --border-color: rgba(16, 110, 190, 0.2);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+  background: none;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-secondary);
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+/* Sticky Navigation */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--blue);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.sticky-nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sticky-nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.sticky-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.sticky-nav a:hover {
+  background: var(--blue);
+  color: white;
+}
+
+/* Hero Section */
+header.hero {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  margin-top: 2rem;
+}
+
+.hero-content .lede {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.hero-card article {
+  height: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--blue);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* Sections */
+section {
+  margin: 4rem 0;
+  padding: 2rem 0;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--mint));
+  border-radius: 2px;
+}
+
+.cards article {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.cards article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(16, 110, 190, 0.2);
+  border-color: var(--blue);
+}
+
+.cards article h3 {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.cards article ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.cards article li {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/* Workflow Section */
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.workflow-card {
+  background: var(--bg-secondary);
+  border: 2px solid var(--blue);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.workflow-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(16, 110, 190, 0.3);
+  border-color: var(--mint);
+}
+
+.workflow-number {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: 3px solid var(--bg-primary);
+}
+
+.workflow-card h3 {
+  margin: 1rem 0 1rem 0;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+}
+
+.workflow-card p {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.workflow-icon {
+  font-size: 2.5rem;
+  margin-top: auto;
+}
+
+.workflow-arrow {
+  font-size: 2rem;
+  color: var(--blue);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive workflow */
+@media (max-width: 1024px) {
+  .workflow-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .workflow-arrow {
+    transform: rotate(90deg);
+    margin: 1rem 0;
+  }
+}
+
+/* About Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.about-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--mint));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover::before {
+  transform: scaleX(1);
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(16, 110, 190, 0.15);
+  border-color: var(--blue);
+}
+
+.about-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.about-card h3 {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.about-card p {
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+.about-founder {
+  margin-top: 4rem;
+  padding: 3rem;
+  background: var(--bg-secondary);
+  border: 2px solid var(--blue);
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.about-founder::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--blue), var(--mint), var(--blue));
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.founder-info h3 {
+  color: var(--text-secondary);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.founder-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 0.5rem;
+}
+
+.founder-title {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.founder-desc {
+  color: var(--text-primary);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+}
+
+.founder-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  background: rgba(16, 110, 190, 0.1);
+  border-radius: 25px;
+  border: 1px solid var(--border-color);
+}
+
+.location-icon {
+  font-size: 1.2rem;
+}
+
+/* Buttons */
+a[role="button"].contrast {
+  background: linear-gradient(135deg, var(--blue), var(--mint));
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+a[role="button"].contrast:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 110, 190, 0.4);
+}
+
+/* Footer */
+footer.container {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--blue);
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sticky-nav .container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .sticky-nav ul:last-child li a {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  header.hero {
+    padding-top: 8rem;
+  }
+  
+  section h2 {
+    font-size: 2rem;
+  }
+  
+  .cards article {
+    padding: 1.5rem;
+  }
+}
+
+
