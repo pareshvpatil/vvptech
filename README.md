@@ -1,0 +1,1 @@
+This repo contains the portfolio website for VVP Tech software consultancy company.
