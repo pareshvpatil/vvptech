@@ -2,6 +2,7 @@
 :root {
   --blue: #106EBE;
   --mint: #0FFCBE;
+  --light: #a8fce5;
   --brand: var(--blue);
   --primary: var(--blue);
   --primary-hover: var(--mint);
@@ -16,20 +17,25 @@ body[data-theme="dark"] {
   --text-secondary: var(--mint);
   --border-color: rgba(16, 110, 190, 0.2);
   --nav-bg: rgba(10, 10, 10, 0.95);
+  --card-bg: var(--bg-secondary);
+  --card-border: var(--border-color);
+  --shadow-color: rgba(16, 110, 190, 0.2);
 }
 
 /* Light theme */
 body[data-theme="light"] {
   --bg-primary: #ffffff;
-  --bg-secondary: rgba(16, 110, 190, 0.05);
-  --text-primary: #1a1a1a;
+  --bg-secondary: rgba(16, 110, 190, 0.08);
+  --text-primary: #2d3748;
   --text-secondary: var(--blue);
-  --border-color: rgba(16, 110, 190, 0.2);
+  --border-color: rgba(16, 110, 190, 0.25);
   --nav-bg: rgba(255, 255, 255, 0.95);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(16, 110, 190, 0.3);
+  --shadow-color: rgba(16, 110, 190, 0.15);
 }
 
 body {
-  background: var(--bg-primary);
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
@@ -38,13 +44,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Parallax Background */
-.parallax-bg {
+/* Parallax Layers */
+.parallax-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: -1;
   overflow: hidden;
 }
@@ -54,39 +60,137 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 120%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 120vh;
+  will-change: transform;
 }
 
-.layer-1 {
-  background: 
-    linear-gradient(135deg, rgba(16, 110, 190, 0.1) 0%, rgba(15, 252, 190, 0.1) 100%),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(16, 110, 190, 0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-  opacity: 0.8;
+.parallax-layer:nth-child(1) {
+  background: linear-gradient(135deg, 
+    rgba(16, 110, 190, 0.1) 0%, 
+    rgba(15, 252, 190, 0.05) 50%, 
+    rgba(16, 110, 190, 0.1) 100%);
+  border-radius: 50%;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  animation: float 20s ease-in-out infinite;
 }
 
-.layer-2 {
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(16, 110, 190, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(15, 252, 190, 0.05) 0%, transparent 50%),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><defs><pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1" fill="rgba(15, 252, 190, 0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
-  opacity: 0.6;
+.parallax-layer:nth-child(2) {
+  background: radial-gradient(circle at 30% 70%, 
+    rgba(15, 252, 190, 0.08) 0%, 
+    transparent 50%);
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  animation: float 15s ease-in-out infinite reverse;
 }
 
-.layer-3 {
-  background: 
-    linear-gradient(45deg, transparent 30%, rgba(16, 110, 190, 0.03) 50%, transparent 70%),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><defs><pattern id="hexagons" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20 0 L40 10 L40 30 L20 40 L0 30 L0 10 Z" fill="none" stroke="rgba(16, 110, 190, 0.08)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23hexagons)"/></svg>');
-  opacity: 0.4;
+.parallax-layer:nth-child(3) {
+  background: radial-gradient(circle at 70% 30%, 
+    rgba(16, 110, 190, 0.06) 0%, 
+    transparent 60%);
+  width: 180%;
+  height: 180%;
+  top: -40%;
+  left: -40%;
+  animation: float 25s ease-in-out infinite;
 }
 
-.layer-4 {
-  background: 
-    linear-gradient(-45deg, transparent 30%, rgba(15, 252, 190, 0.03) 50%, transparent 70%),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><pattern id="circles" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="2" fill="none" stroke="rgba(15, 252, 190, 0.06)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23circles)"/></svg>');
-  opacity: 0.3;
+/* Floating animation for layers */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(-1deg);
+  }
+}
+
+/* Add subtle geometric shapes */
+.parallax-layer::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgba(15, 252, 190, 0.1);
+  border-radius: 50%;
+  animation: spin 30s linear infinite;
+}
+
+.parallax-layer:nth-child(1)::before {
+  top: 20%;
+  right: 20%;
+  width: 150px;
+  height: 150px;
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+.parallax-layer:nth-child(2)::before {
+  bottom: 30%;
+  left: 15%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.parallax-layer:nth-child(3)::before {
+  top: 60%;
+  right: 40%;
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Light theme parallax layers */
+body[data-theme="light"] .parallax-layer:nth-child(1) {
+  background: linear-gradient(135deg, 
+    rgba(16, 110, 190, 0.03) 0%, 
+    rgba(15, 252, 190, 0.02) 50%, 
+    rgba(16, 110, 190, 0.03) 100%);
+}
+
+body[data-theme="light"] .parallax-layer:nth-child(2) {
+  background: radial-gradient(circle at 30% 70%, 
+    rgba(16, 110, 190, 0.04) 0%, 
+    transparent 50%);
+}
+
+body[data-theme="light"] .parallax-layer:nth-child(3) {
+  background: radial-gradient(circle at 70% 30%, 
+    rgba(15, 252, 190, 0.03) 0%, 
+    transparent 60%);
+}
+
+body[data-theme="light"] .parallax-layer::before {
+  border-color: rgba(16, 110, 190, 0.08);
+}
+
+/* Disable parallax on mobile devices for performance */
+@media only screen and (max-device-width: 48rem) {
+  .parallax-layer {
+    transform: none !important;
+    animation: none;
+  }
+  
+  .parallax-layer::before {
+    animation: none;
+  }
 }
 
 /* Material Symbols Icons */
@@ -104,6 +208,10 @@ body {
   font-size: 2.5rem;
   margin-right: 1rem;
   color: var(--mint);
+}
+
+body[data-theme="light"] .hero-icon {
+  color: var(--blue);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -233,11 +341,12 @@ header.hero {
 
 .hero-card article {
   height: 100%;
-  background: var(--bg-secondary);
-  border: 0.0625rem solid var(--blue);
+  background: var(--card-bg, var(--bg-secondary));
+  border: 0.0625rem solid var(--card-border, var(--blue));
   border-radius: 0.75rem;
   padding: 1.5rem;
   backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
 }
 
 .hero-card header {
@@ -257,6 +366,10 @@ header.hero {
   margin-right: 0;
   color: var(--mint);
   font-size: 1.1rem;
+}
+
+body[data-theme="light"] .hero-card ul li .material-symbols-outlined {
+  color: var(--blue);
 }
 
 .meta {
@@ -297,6 +410,10 @@ section h2 .material-symbols-outlined {
   font-size: 2rem;
 }
 
+body[data-theme="light"] section h2 .material-symbols-outlined {
+  color: var(--blue);
+}
+
 section h2::after {
   content: '';
   position: absolute;
@@ -310,13 +427,14 @@ section h2::after {
 }
 
 .cards article {
-  background: var(--bg-secondary);
-  border: 0.0625rem solid var(--border-color);
+  background: var(--card-bg, var(--bg-secondary));
+  border: 0.0625rem solid var(--card-border, var(--border-color));
   border-radius: 0.75rem;
   padding: 2rem;
   transition: all 0.3s ease;
   height: 100%;
   backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
 }
 
 .cards article:hover {
@@ -339,6 +457,10 @@ section h2::after {
   font-size: 1.3rem;
 }
 
+body[data-theme="light"] .cards article h3 .material-symbols-outlined {
+  color: var(--blue);
+}
+
 .cards article ul {
   margin-top: 1rem;
   padding-left: 1.5rem;
@@ -356,11 +478,13 @@ section h2::after {
   gap: 2rem;
   align-items: center;
   margin: 3rem 0;
+  padding: 2rem;
+  overflow: auto;
 }
 
 .workflow-card {
-  background: var(--bg-secondary);
-  border: 0.125rem solid var(--blue);
+  background: var(--card-bg, var(--bg-secondary));
+  border: 0.125rem solid var(--card-border, var(--blue));
   border-radius: 1rem;
   padding: 2rem;
   text-align: center;
@@ -371,6 +495,7 @@ section h2::after {
   flex-direction: column;
   justify-content: center;
   backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
 }
 
 .workflow-card:hover {
@@ -413,6 +538,10 @@ section h2::after {
   font-size: 1.3rem;
 }
 
+body[data-theme="light"] .workflow-card h3 .material-symbols-outlined {
+  color: var(--blue);
+}
+
 .workflow-card p {
   color: var(--text-primary);
   margin-bottom: 1rem;
@@ -423,6 +552,10 @@ section h2::after {
   font-size: 2.5rem;
   margin-top: auto;
   color: var(--mint);
+}
+
+body[data-theme="light"] .workflow-icon {
+  color: var(--blue);
 }
 
 .workflow-icon .material-symbols-outlined {
@@ -466,8 +599,8 @@ section h2::after {
 }
 
 .about-card {
-  background: var(--bg-secondary);
-  border: 0.0625rem solid var(--border-color);
+  background: var(--card-bg, var(--bg-secondary));
+  border: 0.0625rem solid var(--card-border, var(--border-color));
   border-radius: 1rem;
   padding: 2.5rem 2rem;
   text-align: center;
@@ -475,6 +608,7 @@ section h2::after {
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
 }
 
 .about-card::before {
@@ -506,6 +640,10 @@ section h2::after {
   color: var(--mint);
 }
 
+body[data-theme="light"] .about-icon {
+  color: var(--blue);
+}
+
 .about-icon .material-symbols-outlined {
   margin-right: 0;
   font-size: 3rem;
@@ -525,12 +663,13 @@ section h2::after {
 .about-founder {
   margin-top: 4rem;
   padding: 3rem;
-  background: var(--bg-secondary);
-  border: 0.125rem solid var(--blue);
+  background: var(--card-bg, var(--bg-secondary));
+  border: 0.125rem solid var(--card-border, var(--blue));
   border-radius: 1.25rem;
   text-align: center;
   position: relative;
   backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.5rem 1.5rem var(--shadow-color);
 }
 
 .about-founder::before {
@@ -562,10 +701,14 @@ section h2::after {
   font-size: 1.8rem;
 }
 
+body[data-theme="light"] .founder-info h3 .material-symbols-outlined {
+  color: var(--blue);
+}
+
 .founder-name {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--light);
   margin-bottom: 0.5rem;
 }
 
@@ -650,6 +793,7 @@ footer.container {
   transition: transform 0.5s ease-in-out;
   gap: 2rem;
   width: 100%;
+  padding: 2rem 0;
 }
 
 .carousel-slide {
@@ -658,13 +802,14 @@ footer.container {
 }
 
 .carousel-slide article {
-  background: var(--bg-secondary);
-  border: 0.0625rem solid var(--border-color);
+  background: var(--card-bg, var(--bg-secondary));
+  border: 0.0625rem solid var(--card-border, var(--border-color));
   border-radius: 0.75rem;
   padding: 2rem;
   transition: all 0.3s ease;
   height: 100%;
   backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
 }
 
 .carousel-slide article:hover {
@@ -687,6 +832,10 @@ footer.container {
   font-size: 1.3rem;
 }
 
+body[data-theme="light"] .carousel-slide article h3 .material-symbols-outlined {
+  color: var(--blue);
+}
+
 .carousel-slide article ul {
   margin-top: 1rem;
   padding-left: 1.5rem;
@@ -702,8 +851,8 @@ footer.container {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--bg-secondary);
-  border: 0.125rem solid var(--blue);
+  background: var(--card-bg, var(--bg-secondary));
+  border: 0.125rem solid var(--card-border, var(--blue));
   color: var(--text-secondary);
   width: 3.125rem;
   height: 3.125rem;
@@ -714,6 +863,7 @@ footer.container {
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
   z-index: 10;
 }
 
